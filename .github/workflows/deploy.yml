@@ -8,13 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: Workin dir
-          run: ls -al
-
-        - name: Action
-          uses: actions/checkout@v4
-
-        - name: Workin dir after action
-          run: ls -al
+          run: echo $GITHUB-OUTPUT
     
   second-job:
     if: ${{ github.ref == 'refs/heads/main' }}
