@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
         - name: Workin dir
-          run: echo $GITHUB-OUTPUT
+          run: echo $GITHUB_OUTPUT
     
   second-job:
     if: ${{ github.ref == 'refs/heads/main' }}
