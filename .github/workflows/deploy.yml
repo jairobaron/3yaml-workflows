@@ -6,6 +6,10 @@ on:
 jobs:
   first-job:
     runs-on: ubuntu-latest
+
+    outputs:
+      salida: hola      
+
     steps:
         - name: Workin dir
           id: step_1
@@ -15,9 +19,11 @@ jobs:
           run: echo "${{ steps.step_1.outputs.my_variable }}"
     
   second-job:
-    if: ${{ github.ref == 'refs/heads/main' }}
     needs: first-job
     runs-on: ubuntu-latest    
+
+    env:
+      SALIDA: ${{ needs.first-job.outputs.salida }}
     steps:
         - name: Hola mundo 2
-          run: echo "Hola mundo 2 ${{ github.ref }}"
+          run: echo "$SALIDA"
